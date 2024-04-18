@@ -6,5 +6,6 @@ public abstract class Animal implements Eater, NoiseMaker{
     }
 
     @Override
-    public abstract void makeNoise();
+    public void makeNoise(){
+        
 }
