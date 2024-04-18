@@ -1,4 +1,4 @@
-package main.java;
+
 
 public interface Rider {
     public void mount(String rideableType);
