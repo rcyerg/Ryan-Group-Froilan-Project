@@ -1,11 +1,12 @@
-public abstract class Animal implements Eater, NoiseMaker{
+public abstract class Animal implements Eater, NoiseMaker {
 
     @Override
-    public void eat(){
+    public void eat() {
 
     }
 
     @Override
-    public void makeNoise(){
-        
+    public void makeNoise() {
+
+    }
 }
