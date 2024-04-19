@@ -1,4 +1,9 @@
 public class Farmer extends Person implements Pilot, Botanist, Rider{
+
+    private String name;
+    private Farm farm;
+    private Rideable currentlyMounting;
+
     @Override
     public void plant(Crop crop, int fieldToPlantIn, int cropRowToPlantIn) {
 
