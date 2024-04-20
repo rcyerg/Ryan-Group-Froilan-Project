@@ -40,7 +40,7 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
     }
 
     @Override
-    public void mount(String rideableType, int rideableIndex) {
+    public void mount(int rideableNumber) {
 
     }
 
@@ -89,7 +89,7 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
 
     }
 
-    public void shareFarmOwnership(Person newSharedOwner) {
+    public void shareFarmOwnership(Farmer newSharedOwner) {
 
     }
 
