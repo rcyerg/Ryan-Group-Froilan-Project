@@ -3,7 +3,7 @@ public abstract class Person implements Eater, NoiseMaker{
     private String name;
 
     @Override
-    public void eat(){
+    public void eat(String edibleType, int numberToBeEaten){
 
     }
 

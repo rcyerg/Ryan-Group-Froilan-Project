@@ -1,3 +1,3 @@
 public interface Eater {
-    void eat();
+    void eat(String edibleType, int numberToBeEaten);
 }
