@@ -47,6 +47,30 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
     public void dismount() {
 
     }
+
+    public void buyFarm(){
+
+    }
+
+    public void buyChickens(int numChickenToBuy){
+
+    }
+
+    public void buyHorses(int numHorseToBuy){
+
+    }
+
+    public void buildChickenCoop(int numCoopToBuild){
+
+    }
+
+    public void buildStables(int numStableToBuild){
+
+    }
+
+
+
+
     public void buyTractor(int numTractorToBuy) {
 
     }
