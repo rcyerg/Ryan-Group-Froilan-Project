@@ -1,7 +1,7 @@
 public abstract class Animal implements Eater, NoiseMaker {
 
     @Override
-    public void eat() {
+    public void eat(String edibleType, int numberToBeEaten) {
 
     }
 

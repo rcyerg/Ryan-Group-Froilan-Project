@@ -1,6 +1,6 @@
 public class Horse extends Animal implements Eater, NoiseMaker, Rideable{
     @Override
-    public void eat() {
+    public void eat(String edibleType, int numberToBeEaten) {
         
     }
 
