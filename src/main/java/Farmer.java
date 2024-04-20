@@ -1,8 +1,22 @@
 public class Farmer extends Person implements Pilot, Botanist, Rider{
+
+    private String name;
+    private Farm farm;
+    private Rideable currentlyMounting;
+
     @Override
     public void plant(Crop crop, int fieldToPlantIn, int cropRowToPlantIn) {
+    }
+
+    @Override
+    public void eat(String edibleType, int numberToBeEaten){
+    }
+
+    @Override
+    public void makeNoise(){
 
     }
+
 
     @Override
     public void sectionCropRows(int fieldToSection) {
@@ -60,4 +74,5 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
     public void feed(String animalType, int coopOrStableNumber, int animalNumber, int numberOfFood) {
 
     }
+
 }
