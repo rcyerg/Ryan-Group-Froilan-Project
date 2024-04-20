@@ -9,7 +9,7 @@ public class Farm {
     private Tomato[] totalTomato;
     private Egg[] totalEgg;
 
-    public void switchFertilizationOfChickens() {
+    public void updateFarmStatus() {
 
     }
 
