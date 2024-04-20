@@ -5,7 +5,13 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
     private Rideable currentlyMounting;
 
     @Override
-    public void plant(Crop crop, int fieldToPlantIn, int cropRowToPlantIn) {
+    public void rideHorse(){
+
+    }
+
+
+    @Override
+    public void plant(String cropType, int fieldToPlantIn, int cropRowToPlantIn) {
     }
 
     @Override
