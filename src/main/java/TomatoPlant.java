@@ -1,7 +1,7 @@
 public class TomatoPlant extends Crop implements Produce{
 
     @Override
-    public Tomato yield() {
+    public Tomato yield(Farm farmOperatingOn) {
         return new Tomato();
     }
 
