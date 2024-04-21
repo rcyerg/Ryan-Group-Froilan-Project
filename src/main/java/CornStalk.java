@@ -1,7 +1,10 @@
 public class CornStalk extends Crop implements Produce{
 
-    public CornStalk(boolean hasBeenFertilized, boolean hasBeenHarvested) {
-        super(hasBeenFertilized, hasBeenHarvested);
+    private boolean hasBeenFertilized;
+    private boolean hasBeenHarvested;
+    public CornStalk() {
+        this.hasBeenFertilized = false;
+        this.hasBeenHarvested = false;
     }
 
     @Override
