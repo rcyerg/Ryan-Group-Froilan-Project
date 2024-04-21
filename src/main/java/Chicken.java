@@ -15,7 +15,7 @@ public class Chicken extends Animal implements Produce{
     }
 
     @Override
-    public Edible yield(Farm farmOperatingOn) {
-        
+    public boolean  yield(Farm farmOperatingOn) {
+
     }
 }
