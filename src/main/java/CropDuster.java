@@ -3,9 +3,9 @@ public class CropDuster extends Aircraft implements FarmVehicle, NoiseMaker, Rid
     private boolean isMounted;
     private boolean isBeingFlown;
 
-    public CropDuster(boolean isMounted, boolean isBeingFlown) {
-        this.isMounted = isMounted;
-        this.isBeingFlown = isBeingFlown;
+    public CropDuster() {
+        this.isMounted = false;
+        this.isBeingFlown = false;
     }
 
     public void fertilize(int fieldToFertilize,int cropRowToFertilize, Farm farmOperatingOn) {

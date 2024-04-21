@@ -2,8 +2,8 @@ public class Tractor extends Vehicle implements FarmVehicle, NoiseMaker, Rideabl
 
     private boolean isMounted;
 
-    public Tractor(boolean isMounted) {
-        this.isMounted = isMounted;
+    public Tractor() {
+        this.isMounted = false;
     }
 
 

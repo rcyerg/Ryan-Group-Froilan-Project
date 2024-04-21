@@ -4,10 +4,10 @@ public class Chicken extends Animal implements Produce{
     private boolean isFull;
     private int totalNumberOfFoodFed;
 
-    public Chicken(boolean hasBeenForFertilized, boolean isFull, int totalNumberOfFoodFed) {
-        this.hasBeenForFertilized = hasBeenForFertilized;
-        this.isFull = isFull;
-        this.totalNumberOfFoodFed = totalNumberOfFoodFed;
+    public Chicken() {
+        this.hasBeenForFertilized = false;
+        this.isFull = false;
+        this.totalNumberOfFoodFed = 0;
     }
 
     @Override
