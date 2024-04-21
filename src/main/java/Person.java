@@ -1,4 +1,7 @@
 public abstract class Person implements Eater, NoiseMaker{
+    public Person(String name) {
+        this.name = name;
+    }
 
     private String name;
 
