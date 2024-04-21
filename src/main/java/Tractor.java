@@ -4,7 +4,7 @@ public class Tractor extends Vehicle implements FarmVehicle, NoiseMaker, Rideabl
 
 
 
-    public void harvest(int fieldToHarvest, int cropRowToHarvest, int cropToHarvest) {
+    public void harvest(int fieldToHarvest, int cropRowToHarvest, int cropToHarvest, Farm farmOperatingOn) {
 
     }
 
