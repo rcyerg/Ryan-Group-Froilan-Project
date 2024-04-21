@@ -4,6 +4,12 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
     private Farm farm;
     private Rideable currentlyMounting;
 
+    public Farmer(String name) {
+        this.name = name;
+        this.farm = null;
+        this.currentlyMounting = null;
+    }
+
     @Override
     public void rideHorse(){
 
