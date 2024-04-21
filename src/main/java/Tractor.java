@@ -2,6 +2,9 @@ public class Tractor extends Vehicle implements FarmVehicle, NoiseMaker, Rideabl
 
     private boolean isMounted;
 
+    public Tractor() {
+        this.isMounted = false;
+    }
 
 
     public void harvest(int fieldToHarvest, int cropRowToHarvest, int cropToHarvest, Farm farmOperatingOn) {

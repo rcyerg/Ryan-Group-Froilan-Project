@@ -4,6 +4,12 @@ public class Chicken extends Animal implements Produce{
     private boolean isFull;
     private int totalNumberOfFoodFed;
 
+    public Chicken() {
+        this.hasBeenForFertilized = false;
+        this.isFull = false;
+        this.totalNumberOfFoodFed = 0;
+    }
+
     @Override
     public void eat(String edibleType, int numberToBeEaten) {
 
