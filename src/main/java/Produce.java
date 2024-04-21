@@ -1,5 +1,5 @@
 public interface Produce {
 
-    Edible yield();
+    Edible yield(Farm farmOperatingOn);
 
 }

@@ -102,7 +102,10 @@ public class Farmer extends Person implements Pilot, Botanist, Rider{
     }
 
     public void feed(String animalType, int coopOrStableNumber, int animalNumber, int numberOfFood) {
+    }
 
+    public void cheekCoopForEggs(int coopNumber){
+        
     }
 
 }

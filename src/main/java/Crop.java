@@ -4,6 +4,6 @@ public abstract class Crop implements Produce{
     private boolean hasBeenHarvested;
 
     @Override
-    public abstract Edible yield();
+    public abstract Edible yield(Farm farmOperatingOn);
 
 }
