@@ -1,8 +1,11 @@
 public class TomatoPlant extends Crop implements Produce{
 
+    private boolean hasBeenFertilized;
+    private boolean hasBeenHarvested;
 
-    public TomatoPlant(boolean hasBeenFertilized, boolean hasBeenHarvested) {
-        super(hasBeenFertilized, hasBeenHarvested);
+    public TomatoPlant() {
+        this.hasBeenFertilized = false;
+        this.hasBeenHarvested = false;
     }
 
     @Override
