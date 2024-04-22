@@ -9,6 +9,18 @@ public class Farm {
     private Tomato[] totalTomato;
     private Egg[] totalEgg;
 
+    public Field[] getFields() {
+        return fields;
+    }
+
+    public EarCorn[] getTotalEarCorn() {
+        return totalEarCorn;
+    }
+
+    public Tomato[] getTotalTomato() {
+        return totalTomato;
+    }
+
     public Farm() {
         this.stables = new Stable[10];
         this.chickenCoops = new ChickenCoop[10];

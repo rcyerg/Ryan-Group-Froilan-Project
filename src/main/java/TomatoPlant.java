@@ -10,7 +10,15 @@ public class TomatoPlant extends Crop implements Produce{
 
     @Override
     public boolean yield(Farm farmOperatingOn) {
-
+        boolean tomatoHarvested = false;
+        for (Tomato tomato : farmOperatingOn.getTotalTomato()) {
+            if (tomato == null) {
+                tomato = new Tomato();
+                tomatoHarvested = true;
+                break;
+            }
+        }
+        return tomatoHarvested;
     }
 
 }
