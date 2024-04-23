@@ -21,6 +21,21 @@ public class Farm {
         return totalTomato;
     }
 
+    public Egg[] getTotalEgg() {
+        return totalEgg;
+    }
+    public ChickenCoop[] getChickenCoops() {
+        return chickenCoops;
+    }
+
+    public Stable[] getStables() {
+        return stables;
+    }
+
+    public FarmVehicle[] getFarmVehicles() {
+        return farmVehicles;
+    }
+
     public Farm() {
         this.stables = new Stable[10];
         this.chickenCoops = new ChickenCoop[10];
