@@ -1,6 +1,6 @@
 public class Chicken extends Animal implements Produce{
    
-    private boolean hasBeenForFertilized;
+    private boolean hasBeenFertilized;
     private boolean isFull;
     private int totalNumberOfFoodFed;
 
@@ -8,8 +8,20 @@ public class Chicken extends Animal implements Produce{
         isFull = full;
     }
 
+    public boolean getIsFull() {
+        return isFull;
+    }
+
+    public boolean getHasBeenFertilized() {
+        return hasBeenFertilized;
+    }
+
+    public void setHasBeenFertilized(boolean hasBeenFertilized) {
+        this.hasBeenFertilized = hasBeenFertilized;
+    }
+
     public Chicken() {
-        this.hasBeenForFertilized = false;
+        this.hasBeenFertilized = false;
         this.isFull = false;
         this.totalNumberOfFoodFed = 0;
     }
@@ -29,7 +41,7 @@ public class Chicken extends Animal implements Produce{
     }
 
     @Override
-    public boolean  yield(Farm farmOperatingOn) {
+    public boolean yield(Farm farmOperatingOn) {
 
     }
 }

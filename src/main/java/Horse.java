@@ -8,6 +8,10 @@ public class Horse extends Animal implements Eater, NoiseMaker, Rideable{
         isFull = full;
     }
 
+    public boolean getIsFull() {
+        return isFull;
+    }
+
     public boolean isMounted() {
         return isMounted;
     }
@@ -24,11 +28,13 @@ public class Horse extends Animal implements Eater, NoiseMaker, Rideable{
 
     @Override
     public void eat(String edibleType, int numberToBeEaten) {
-        if (numberToBeEaten + totalNumberOfFoodFed >= 3) {
+        if(!edibleType.equalsIgnoreCase("corn")) {
+            System.out.println(edibleType.toLowerCase() + " is not valid");
+        } else if (numberToBeEaten + totalNumberOfFoodFed >= 3) {
             this.setFull(true);
         }
         totalNumberOfFoodFed += numberToBeEaten;
-        System.out.println("Horse eats " + numberToBeEaten + " " + edibleType);
+        System.out.println("Horse eats " + numberToBeEaten + " " + edibleType.toLowerCase());
     }
 
     @Override

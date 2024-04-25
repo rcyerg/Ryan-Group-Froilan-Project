@@ -15,6 +15,10 @@ public class CropDuster extends Aircraft implements FarmVehicle, NoiseMaker, Rid
         isBeingFlown = beingFlown;
     }
 
+    public boolean getIsBeingFlown() {
+        return isBeingFlown;
+    }
+
     public CropDuster() {
         this.isMounted = false;
         this.isBeingFlown = false;

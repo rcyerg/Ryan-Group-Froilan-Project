@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Farmer extends Person implements Pilot, Botanist, Rider {
 
     private String name;
@@ -84,7 +86,7 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
             case "corn":
                 int totalEarCorn = 0;
                 for (EarCorn earCorn : this.getFarm().getTotalEarCorn()) {
-                    if (earCorn == null) {
+                    if (earCorn != null) {
                         totalEarCorn++;
                     }
                 }
@@ -104,7 +106,7 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
             case "tomato":
                 int totalTomato = 0;
                 for (Tomato tomato : this.getFarm().getTotalTomato()) {
-                    if (tomato == null) {
+                    if (tomato != null) {
                         totalTomato++;
                     }
                 }
@@ -124,7 +126,7 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
             case "egg":
                 int totalEggs = 0;
                 for (Egg eggs : this.getFarm().getTotalEgg()) {
-                    if (eggs == null) {
+                    if (eggs != null) {
                         totalEggs++;
                     }
                 }
@@ -178,11 +180,30 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
 
     @Override
     public void mount(String rideableType) {
-        FarmVehicle[] vehicles = this.getFarm().getFarmVehicles();
-
-
-    }
-
+            switch (rideableType.toLowerCase()) {
+                case "tractor":
+                    for (FarmVehicle farmVehicle : this.getFarm().getFarmVehicles()) {
+                        if (farmVehicle instanceof Tractor && ((Tractor)farmVehicle).isMounted() == false) {
+                            this.setCurrentlyMounting((Rideable)farmVehicle);
+                            ((Tractor)farmVehicle).setMounted(true);
+                            System.out.println(this.getName() + " has mounted the tractor");
+                            break;
+                        }
+                    }
+                    System.out.println("All tractors are currently mounted or none currently exist!");
+                case "crop duster":
+                    for (FarmVehicle farmVehicle : this.getFarm().getFarmVehicles()) {
+                        if (farmVehicle instanceof CropDuster && ((CropDuster)farmVehicle).isMounted() == false) {
+                            this.setCurrentlyMounting((Rideable)farmVehicle);
+                            ((CropDuster)farmVehicle).setMounted(true);
+                            System.out.println(this.getName() + " has mounted the crop duster");
+                        }
+                    }
+                default:
+                    System.out.println("Invalid rideable type");
+                    break;
+            }
+        }
     @Override
     public void mount(int rideableNumber) {
         int index = rideableNumber -1;
@@ -216,7 +237,15 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
 
     @Override
     public void mount(int stableNumber, int horseNumber) {
+        Horse targetHorse = this.getFarm().getStables()[stableNumber - 1].getHorses()[horseNumber - 1];
 
+        if (targetHorse != null && !targetHorse.isMounted()) {
+            this.setCurrentlyMounting(targetHorse);
+            targetHorse.setMounted(true);
+            System.out.println(this.getName() + " mounts horse #" + horseNumber + " in stable #" + stableNumber);
+        } else {
+            System.out.println("No horse exists at the specified location or it is already mounted");
+        }
     }
 
     @Override
@@ -353,9 +382,6 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
         }
     }
 
-
-
-
     public void buyTractor(int numTractorToBuy) {
         int openSlots = 0;
         for (FarmVehicle vehicle : this.getFarm().getFarmVehicles()) {
@@ -398,9 +424,9 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
                     break;
                 }
             }
-            System.out.println(this.getName() + " bought " + numDusterToBuy + " tractors.");
+            System.out.println(this.getName() + " bought " + numDusterToBuy + " crop dusters.");
         } else {
-            System.out.println("Not enough space on the farm to purchase " + numDusterToBuy + " tractors.");
+            System.out.println("Not enough space on the farm to purchase " + numDusterToBuy + " crop dusters.");
         }
     }
 
@@ -448,22 +474,114 @@ public class Farmer extends Person implements Pilot, Botanist, Rider {
     }
 
     public void operateCropDuster(int fieldToFertilize, int cropRowToFertilize, Farm operatingOn){
+            // Check if the CropDuster is currently mounted by the Farmer
+            if (this.getCurrentlyMounting() instanceof CropDuster && ((CropDuster) this.getCurrentlyMounting()).getIsBeingFlown()) {
+                    // Print out the Farmer's name and that they are operating the crop duster
+                    System.out.println(this.getName() + " is operating the crop duster!");
+                    // Define the farmOperatingOn variable and set it to the Farmer's farm
+                    Farm farmOperatingOn = this.getFarm();
+                    // Call the fertilize method on the CropDuster and pass in the necessary variables
+                    ((CropDuster) this.getCurrentlyMounting()).fertilize(fieldToFertilize, cropRowToFertilize, farmOperatingOn);
+                } else {
+                // Print out the Farmer's name and that they are not currently mounted on the crop duster
+                System.out.println(this.getName() + " is not currently mounted on crop duster.");
+            }
 
     }
 
     public void feed(String animalType, int coopOrStableNumber, int animalNumber, int numberOfFood) {
-        Animal animal = null;
         switch (animalType.toLowerCase()) {
+            case "chicken":
+                Chicken chicken = this.getFarm().getChickenCoops()[coopOrStableNumber -1].getChickens()[animalNumber - 1];
+                if (chicken.getIsFull() == true) {
+                    System.out.println("Chicken is full");
+                    break;
+                } else {
+                    int numberOfTomatoes = 0;
+                    for (Tomato tomato : this.getFarm().getTotalTomato()) {
+                        if (tomato != null) {
+                            numberOfTomatoes++;
+                        }
+                    }
+                    if (numberOfTomatoes < numberOfFood) {
+                        System.out.println("Not enough tomatoes to feed the chicken.");
+                        break;
+                    } else {
+                        int totalTomatoesEaten = 0;
+                        for (Tomato tomato : this.getFarm().getTotalTomato()) {
+                            if (tomato != null && totalTomatoesEaten <= numberOfFood) {
+                                totalTomatoesEaten++;
+                                tomato = null;
+                            }
+                            if (numberOfFood == totalTomatoesEaten) {
+                            } break;
+                        }
+                        System.out.println(this.getName() + " fed chicken #" + animalNumber + " in coop #" + coopOrStableNumber);
+                        chicken.eat("tomato", numberOfFood);
+                    }
+                }
+                break;
             case "horse":
-                Stable stable = this.getFarm().getStables()[coopOrStableNumber - 1];
-                animal = stable.getHorses()[animalNumber - 1];
-                String foodType = "ear corn";
+                Horse horse = this.getFarm().getStables()[coopOrStableNumber - 1].getHorses()[animalNumber - 1];
+                if (horse.getIsFull() == true) {
+                    System.out.println("horse is full");
+                    break;
+                } else {
+                    int numberOfCorn = 0;
+                    for (EarCorn earCorn : this.getFarm().getTotalEarCorn()) {
+                        if (earCorn != null) {
+                            numberOfCorn++;
+                        }
+                    }
+                    if (numberOfCorn < numberOfFood) {
+                        System.out.println("Not enough tomatoes to feed the horse");
+                        break;
+                    } else {
+                        int totalEarCornEaten = 0;
+                        for (EarCorn earCorn : this.getFarm().getTotalEarCorn()) {
+                            if (earCorn != null && totalEarCornEaten <= numberOfFood) {
+                                totalEarCornEaten++;
+                                earCorn = null;
+                            }
+                            if (numberOfFood == totalEarCornEaten) {
+                            } break;
+                        }
+                        System.out.println(this.getName() + " fed horse #" + animalNumber + " in stable #" + coopOrStableNumber);
+                        horse.eat("Ear corn", numberOfFood);
+                    }
+                }
+            default:
+                System.out.println("Invalid animal type!");
 
         }
-    }
+        }
 
     public void checkCoopForEggs(int coopNumber){
-        
+        Farm farmOperatingOn = this.getFarm();
+        ChickenCoop selectedCoop = this.getFarm().getChickenCoops()[coopNumber - 1];
+        int eggsFound = 0;
+        boolean foundUnsuccessfulYield = false;
+
+        for (Chicken c : selectedCoop.getChickens()) {
+            if (c != null) {
+                boolean successfulYield = c.yield(farmOperatingOn);
+
+                if (!successfulYield) {
+                    foundUnsuccessfulYield = true;
+                    break;
+                } else {
+                    eggsFound++;
+                    c.setHasBeenFertilized(true);
+                }
+            }
+        }
+        if (foundUnsuccessfulYield) {
+            System.out.println(this.getName() + " checks chicken coop #" + coopNumber + " for eggs, but can't store all the eggs found. Stored " + eggsFound + " eggs.");
+        } else {
+            System.out.println(this.getName() + " found " + eggsFound + " eggs in chicken coop #" + coopNumber + ".");
+        }
+
+        }
+
     }
 
-}
