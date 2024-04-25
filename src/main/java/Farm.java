@@ -48,7 +48,48 @@ public class Farm {
     }
 
     public void updateFarmStatus() {
-
+        //Iterate through each field on the farm
+        for (Field field : this.fields) {
+            if (field != null) { //check if the field is null
+                //Iterate through each crop row in the field
+                for (CropRow cropRow : field.getCropRows()) {
+                    if (cropRow != null) { //Check if the crop row is not null
+                        //Iterate through each crop in the crop row
+                        for (Crop crop : cropRow.getCrops()) {
+                            if (crop != null) { // check if the crop is not null
+                                crop.setHasBeenHarvested(false); //reset the harvest status to false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Iterate through each coop on the farm
+        for (ChickenCoop coop : this.chickenCoops) {
+            if (coop != null) { // Check if the coop is not null
+                // Iterate through each chicken in the coop
+                for (Chicken chicken : coop.getChickens()) {
+                    if (chicken != null) { // Check if the chicken is not null
+                        // Flip the fertilized status
+                        boolean currentStatus = chicken.getHasBeenFertilized();
+                        chicken.setHasBeenFertilized(!currentStatus);
+                        // Set the setFull status to false
+                        chicken.setFull(false);
+                    }
+                }
+            }
+        }
+        // Iterate through each stable on the farm
+        for (Stable stable : this.stables) {
+            if (stable != null) { // Check if the stable is not null
+                // Iterate through each horse in the stable
+                for (Horse horse : stable.getHorses()) {
+                    if (horse != null) { // Check if the horse is not null
+                        horse.setFull(false); // Set setFull to false
+                    }
+                }
+            }
+        }
     }
 
 }

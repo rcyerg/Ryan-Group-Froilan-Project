@@ -10,6 +10,6 @@ public abstract class Animal implements Eater, NoiseMaker {
 
     @Override
     public void makeNoise() {
-
+        System.out.println("Default animal noise!!");
     }
 }

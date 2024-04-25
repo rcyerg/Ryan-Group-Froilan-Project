@@ -42,6 +42,14 @@ public class Chicken extends Animal implements Produce{
 
     @Override
     public boolean yield(Farm farmOperatingOn) {
-
+        boolean eggYielded = false;
+        for (Egg egg : farmOperatingOn.getTotalEgg()) {
+            if (egg == null) {
+                egg = new Egg();
+                eggYielded = true;
+                break;
+            }
+        }
+        return eggYielded;
     }
 }

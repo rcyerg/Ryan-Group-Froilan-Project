@@ -42,7 +42,7 @@ public class CropDuster extends Aircraft implements FarmVehicle, NoiseMaker, Rid
 
     @Override
     public void makeNoise() {
-        System.out.println("Crop duster sound");
+        System.out.println("Cock a doodle doooooooo");
     }
 
 }

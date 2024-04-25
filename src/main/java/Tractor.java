@@ -61,5 +61,4 @@ public class Tractor extends Vehicle implements FarmVehicle, NoiseMaker, Rideabl
     public void makeNoise() {
         System.out.println("Beep Beep!!");
     }
-
 }
