@@ -15,18 +15,34 @@ public class CropDuster extends Aircraft implements FarmVehicle, NoiseMaker, Rid
         isBeingFlown = beingFlown;
     }
 
+    public boolean getIsBeingFlown() {
+        return isBeingFlown;
+    }
+
     public CropDuster() {
         this.isMounted = false;
         this.isBeingFlown = false;
     }
 
     public void fertilize(int fieldToFertilize,int cropRowToFertilize, Farm farmOperatingOn) {
-
+        Crop[] crops = farmOperatingOn.getFields()[fieldToFertilize - 1].getCropRows()[cropRowToFertilize - 1].getCrops();
+        int fertilizedCount = 0;
+        for (Crop crop : crops) {
+            if (crop != null && !crop.getHasBeenFertilized()) {
+                crop.setHasBeenFertilized(true);
+                fertilizedCount++;
+            }
+        }
+        if (fertilizedCount > 0) {
+            System.out.println("Fertilized " + fertilizedCount + " crops in field #" + fieldToFertilize + " at crop row #" + cropRowToFertilize);
+        } else {
+            System.out.println("No crops to fertilize in field #" + fieldToFertilize + " at crop row #" + cropRowToFertilize);
+        }
     }
 
     @Override
     public void makeNoise() {
-
+        System.out.println("Cock a doodle doooooooo");
     }
 
 }

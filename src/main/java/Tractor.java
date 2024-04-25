@@ -59,7 +59,6 @@ public class Tractor extends Vehicle implements FarmVehicle, NoiseMaker, Rideabl
 
     @Override
     public void makeNoise() {
-
+        System.out.println("Beep Beep!!");
     }
-
 }

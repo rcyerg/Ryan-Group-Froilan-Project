@@ -5,7 +5,7 @@ public interface Rider {
 
     public void mount(int rideableNumber);
 
-    public void mount(String rideableType, int stableNumber, int horseNumber);
+    public void mount(int stableNumber, int horseNumber);
 
    public void dismount();
 
